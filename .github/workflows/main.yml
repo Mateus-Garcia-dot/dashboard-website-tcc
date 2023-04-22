@@ -24,9 +24,8 @@ jobs:
         with:
           push: true
           tags: mateusmedeirosgarcia/frontend-tcc:latest
-#       - 
-#         name: Webhook Action
-#         uses: joelwmale/webhook-action@2.3.2
-#         with:
-#           url: ${{ secrets.WEBHOOK }}
-#           insecure: true
+      - 
+        name: Webhook Action
+        uses: joelwmale/webhook-action@2.3.2
+        with:
+          url: ${{ secrets.WEBHOOK }}
