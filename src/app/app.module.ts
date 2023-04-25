@@ -5,14 +5,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MapaModule } from './shared/mapa/mapa.module';
-import { NavbarModule } from './components/navbar/navbar.module';
-import { ListaLinhasComponent } from './core/lista-linhas/lista-linhas.component';
+import { NavbarModule } from './shared/navbar/navbar.module';
 import { HomeComponent } from './core/home/home.component';
+import { ListaPontosComponent } from './core/pontos/lista-pontos/lista-pontos.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatCardModule } from '@angular/material/card';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { ListaLinhasComponent } from './core/lista-linhas/lista-linhas.component';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
+    ListaPontosComponent,
     ListaLinhasComponent,
   ],
   imports: [
@@ -20,7 +27,11 @@ import { HomeComponent } from './core/home/home.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MapaModule,
-    NavbarModule
+    NavbarModule,
+    MatCardModule,
+    MatPaginatorModule,
+    MatTableModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

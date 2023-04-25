@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LinhasService } from 'src/app/services/linhas.service';
 
 @Component({
   selector: 'app-lista-linhas',
@@ -7,4 +8,20 @@ import { Component } from '@angular/core';
 })
 export class ListaLinhasComponent {
 
+  linhas: any[] = [];
+
+  displayedColumns: string[] = ['COD', 'NOME', 'SOMENTE_CARTAO', 'CATEGORIA_SERVICO'];
+  dataSource?: any;
+
+  constructor(private linhasService: LinhasService) {
+    this.listarLinhas();
+  }
+
+  listarLinhas() {
+    this.linhasService.listarLinhas().subscribe(resultado => {
+      console.log(resultado)
+      this.linhas = resultado.linhas;
+      this.dataSource = this.linhas;
+    });
+  }
 }

@@ -13,14 +13,9 @@ export class MapaService {
   markers?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   polyline?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-  constructor(private httpClient: HttpClient) {
-    this.apiLoaded = httpClient.jsonp("https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfgO1jvx-odeUtoMiglrkK7Df0O77t00", 'callback')
-      .pipe(
-        map(() => true),
-        catchError(() => of(false)),
-      );
+  constructor(httpClient: HttpClient) {
+    this.apiLoaded = this.carregaGoogleMap(httpClient);
   }
-
 
   calculateCenter(pontos: any[]) {
     var longitudes = pontos.map((i) => i.lng);
@@ -40,5 +35,12 @@ export class MapaService {
     return { lat: centerX, lng: centerY }
   }
 
+  private carregaGoogleMap(httpClient: HttpClient) {
+     return httpClient.jsonp("https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfgO1jvx-odeUtoMiglrkK7Df0O77t00", 'callback')
+      .pipe(
+        map(() => true),
+        catchError(() => of(false))
+      );
+  }
 
 }

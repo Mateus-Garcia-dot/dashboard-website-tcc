@@ -25,6 +25,7 @@ export class HomeComponent {
   private buscarLinhaShape(linhaId: string) {
     this.linhaService.buscarShapeLinha(linhaId).subscribe(pontosShape => {
       const shape = pontosShape as google.maps.LatLngLiteral[];
+      console.log(shape)
       this.mapaService.options.next({ center: this.mapaService.calculateCenter(shape) });
       this.mapaService.polyline?.next({
         path: shape,
