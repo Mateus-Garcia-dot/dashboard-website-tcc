@@ -39,4 +39,6 @@ export class MapaService {
 
     return { lat: centerX, lng: centerY }
   }
+
+
 }

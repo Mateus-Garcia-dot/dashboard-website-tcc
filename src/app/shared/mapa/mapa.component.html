@@ -1,7 +1,8 @@
 <div *ngIf="apiLoaded">
   <google-map [options]="options" [zoom]="13">
     <map-polyline *ngIf="polylineOptions" [options]="polylineOptions"></map-polyline>
-    <map-marker *ngFor="let marker of markers">
+    <map-marker #markerElem="mapMarker" *ngFor="let marker of markers" [position]="marker.position"
+      [title]="marker.title" [options]="marker.options">
     </map-marker>
   </google-map>
 </div>

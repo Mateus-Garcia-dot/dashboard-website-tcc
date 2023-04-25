@@ -10,7 +10,7 @@ import { MapaService } from 'src/app/services/mapa.service';
 export class MapaComponent implements OnInit {
 
   options!: google.maps.MapOptions;
-  markers?: google.maps.Marker[];
+  markers?: any[];
   polylineOptions?: any;
 
   apiLoaded: boolean = false;
