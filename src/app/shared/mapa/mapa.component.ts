@@ -1,20 +1,54 @@
-import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
-import { Observable, map, catchError, of } from 'rxjs';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { MapaService } from 'src/app/services/mapa.service';
 
 @Component({
   selector: 'app-mapa',
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.scss']
 })
-export class MapaComponent {
-  apiLoaded: Observable<boolean>;
+export class MapaComponent implements OnInit {
 
-  constructor(httpClient: HttpClient) {
-    this.apiLoaded = httpClient.jsonp("https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfgO1jvx-odeUtoMiglrkK7Df0O77t00", 'callback')
-      .pipe(
-        map(() => true),
-        catchError(() => of(false)),
-      );
+  options!: google.maps.MapOptions;
+  markers?: google.maps.Marker[];
+  polylineOptions?: any;
+
+  apiLoaded: boolean = false;
+
+  localizacaoPrefeitura = { lat: -25.417419972874562, lng: -49.269363993299066 };
+
+  constructor(private mapaService: MapaService) {
+    this.mapaService.apiLoaded.subscribe(loaded => this.apiLoaded = loaded);
+
+    this.atualizarShapeMapa();
+    this.atualizarOpcoesMapa();
+    this.atualizarMarkersMapa();
   }
+
+  ngOnInit(): void {
+    if (!this.options) {
+      this.options = {  center: this.localizacaoPrefeitura };
+    }
+  }
+
+  private atualizarShapeMapa() {
+    this.mapaService.polyline?.subscribe(polyline => {
+      if (polyline) {
+        this.polylineOptions = polyline;
+      }
+    });
+  }
+
+  private atualizarMarkersMapa() {
+    this.mapaService.markers?.subscribe(markers => this.markers = markers);
+  }
+
+  private atualizarOpcoesMapa() {
+    this.mapaService.options?.subscribe(options => {
+      if (options) {
+        this.options = options;
+      }
+    });
+  }
+
 }
