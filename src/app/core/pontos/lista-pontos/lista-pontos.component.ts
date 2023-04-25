@@ -19,9 +19,8 @@ export class ListaPontosComponent {
 
   buscarPontosPorLinha() {
     this.pontosService.buscarPontosPorLinha('022').subscribe(result => {
-      this.pontos = result;
+      this.pontos = result.data;
       this.dataSource = this.pontos;
-      console.log(this.pontos)
     });
   }
 }

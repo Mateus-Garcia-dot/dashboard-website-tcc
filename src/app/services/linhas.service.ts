@@ -17,6 +17,6 @@ export class LinhasService {
   }
 
   listarLinhas(): Observable<any> {
-    return this.httpClient.get<any>(`${environment.apiUrl}linhas/`);
+    return this.httpClient.get<any>(`${environment.apiUrl}linhas?pagina=1&qtdPorPagina=10`);
   }
 }
