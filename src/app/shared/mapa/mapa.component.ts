@@ -27,13 +27,17 @@ export class MapaComponent implements OnInit {
 
   ngOnInit(): void {
     if (!this.options) {
-      this.options = {  center: this.localizacaoPrefeitura };
+      this.options = {
+        center: this.localizacaoPrefeitura,
+        fullscreenControl: false
+       };
     }
   }
 
   private atualizarShapeMapa() {
     this.mapaService.polyline?.subscribe(polyline => {
       if (polyline) {
+        console.log(polyline)
         this.polylineOptions = polyline;
       }
     });

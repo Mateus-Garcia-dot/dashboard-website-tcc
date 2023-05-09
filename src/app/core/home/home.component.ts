@@ -15,18 +15,19 @@ export class HomeComponent {
   constructor(
     private mapaService: MapaService,
     private linhaService: LinhasService,
-    private veiculoService: VeiculosService
+    private veiculoService: VeiculosService,
   ) {
-
-    this.buscarLinhaShape('022');
-    this.buscarLocalizacaoOnibusDaLinha('022');
+    this.mapaService.filtros?.subscribe(filtros => {
+      if(filtros) {
+        this.buscarLinhaShape(filtros.linha);
+        this.buscarLocalizacaoOnibusDaLinha(filtros.linha);
+      }
+    })
   }
 
   private buscarLinhaShape(linhaId: string) {
     this.linhaService.buscarShapeLinha(linhaId).subscribe(pontosShape => {
       const shape = pontosShape as google.maps.LatLngLiteral[];
-      console.log(shape)
-      this.mapaService.options.next({ center: this.mapaService.calculateCenter(shape) });
       this.mapaService.polyline?.next({
         path: shape,
         geodesic: true,

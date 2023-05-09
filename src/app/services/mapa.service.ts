@@ -12,6 +12,7 @@ export class MapaService {
   options: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   markers?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   polyline?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  filtros?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(httpClient: HttpClient) {
     this.apiLoaded = this.carregaGoogleMap(httpClient);

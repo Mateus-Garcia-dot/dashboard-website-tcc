@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {  FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MapaService } from 'src/app/services/mapa.service';
 
 @Component({
   selector: 'app-navbar',
@@ -7,4 +9,11 @@ import { Component } from '@angular/core';
 })
 export class NavbarComponent {
 
+  linha = new FormControl('');
+
+  constructor(private mapaService: MapaService, ) {}
+
+  pesquisarLinha() {
+    this.mapaService.filtros?.next({linha: this.linha.value});
+  }
 }
