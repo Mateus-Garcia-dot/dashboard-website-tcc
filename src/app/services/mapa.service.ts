@@ -13,6 +13,8 @@ export class MapaService {
   markers?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   polyline?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   filtros?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  buscaLinha?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  listaOnibus?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   linhaSelecionada?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(httpClient: HttpClient) {
@@ -20,7 +22,7 @@ export class MapaService {
   }
 
   alterarLinha(linha: string | null) {
-    this.linhaSelecionada?.next({linha: linha});
+    this.buscaLinha?.next(linha);
     this.limparMarcacoes();
     this.filtros?.next(null);
   }

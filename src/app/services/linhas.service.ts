@@ -16,8 +16,8 @@ export class LinhasService {
     return this.httpClient.get<any>(`${environment.apiUrl}linhas/shape/${linhaId}`);
   }
 
-  listarLinhas(): Observable<any> {
-    return this.httpClient.get<any>(`${environment.apiUrl}linhas?pagina=1&qtdPorPagina=10`);
+  listarLinhas(pagina: number, qntdPorPagina: number): Observable<any> {
+    return this.httpClient.get<any>(`${environment.apiUrl}linhas?pagina=${pagina}&qntdPorPagina=${qntdPorPagina}`);
   }
 
   buscarDetalhesLinha(linhaId: any) {

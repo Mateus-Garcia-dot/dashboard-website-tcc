@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { SituacaoOnibusEnum } from 'src/app/enum/situacao-onibus.enum';
 import { MapaService } from 'src/app/services/mapa.service';
 
 @Component({
@@ -10,6 +11,7 @@ import { MapaService } from 'src/app/services/mapa.service';
 export class FiltroMapaComponent {
 
   form: FormGroup;
+  SituacaoOnibusEnum = SituacaoOnibusEnum;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -17,9 +19,7 @@ export class FiltroMapaComponent {
   ) {
     this.form = this.formBuilder.group({
       situacao: new FormArray([]),
-      adptado: [],
-      formaPagamento: new FormArray([]),
-      tipo: new FormArray([]),
+      adaptado: [null],
       exibirPontos: [],
     });
 
@@ -31,7 +31,6 @@ export class FiltroMapaComponent {
 
   selecionarSituacao(event: any, value: string) {
     const formArray: FormArray = this.form.get('situacao') as FormArray;
-    console.log(event)
     if (event.checked) {
       formArray.push(new FormControl(value));
     }

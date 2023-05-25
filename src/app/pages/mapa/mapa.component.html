@@ -1,8 +1,10 @@
-<div class="info" *ngIf="linha">
-  <span>{{ linha.COD + " - " + linha.NOME }}</span>
-</div>
+<app-filtro-mapa *ngIf="linhaId" ></app-filtro-mapa>
 
-<app-filtro-mapa></app-filtro-mapa>
+<app-lista-onibus *ngIf="linhaId" [linhaId]="linhaId"></app-lista-onibus>
+
+<div class="carregando" *ngIf="carregando">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+</div>
 
 <div *ngIf="apiLoaded">
   <google-map [options]="options" [zoom]="13">

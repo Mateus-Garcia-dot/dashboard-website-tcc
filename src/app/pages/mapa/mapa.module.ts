@@ -10,6 +10,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FiltroMapaComponent } from 'src/app/components/filtro-mapa/filtro-mapa.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { ListaOnibusModule } from 'src/app/components/lista-onibus/lista-onibus.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatFormFieldModule,
     MatInputModule,
     MatCheckboxModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatProgressSpinnerModule,
+    ListaOnibusModule
   ],
   exports: [
     MapaComponent

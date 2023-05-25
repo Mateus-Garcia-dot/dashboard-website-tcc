@@ -1,0 +1,18 @@
+.lista-onibus {
+  ::ng-deep .mat-expansion-panel-body {
+    overflow-y: scroll;
+    max-height: 300px;
+    padding: 0 !important;
+  }
+
+  tr {
+    text-align-last: center;
+  }
+
+  .status-lista-onibus {
+    display: flex;
+    flex-direction: column;
+    padding: 0px 4px 4px 4px;
+    font-size: 12px;
+  }
+}

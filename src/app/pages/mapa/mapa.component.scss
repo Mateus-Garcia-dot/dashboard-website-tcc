@@ -5,24 +5,23 @@
   }
 }
 
-
-.info {
-  border: solid;
+.carregando {
+  position: absolute;
+  display: flex;
   left: 0;
-  right: 0;
-  margin-left: auto;
-  margin-right: auto;
-  position: absolute;
-  width: 20%;
-  position: absolute;
   z-index: 1;
-  margin-top: 20px;
-  text-align-last: center;
-  background-color: white;
-  padding: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  border-radius: 8px;
+  right: 0;
+  place-content: center;
+  margin-top: 40vh;
 }
 
+app-lista-onibus {
+  z-index: 1;
+  position: absolute;
+  right: 10px;
+  margin-top: 15px;
 
+  table {
+    width: 20%;
+  }
+}

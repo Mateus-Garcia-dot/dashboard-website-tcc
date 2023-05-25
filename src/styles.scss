@@ -11,10 +11,20 @@ body {
 }
 
 .titulo-listas {
-  font-size: 48px;
+  font-size: 36px;
   margin: 33px 0px;
 }
 
 .filtro-listas {
   margin: 16px 0px;
+
+  form {
+    display: flex;
+    width: 100%;
+
+    mat-form-field {
+      margin-right: 8px;
+    }
+  }
 }
+

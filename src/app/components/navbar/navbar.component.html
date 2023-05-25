@@ -19,7 +19,7 @@
       </ul>
     </div>
 
-    <form>
+    <form *ngIf="exibirCampoPesquisa">
       <input placeholder="Digite o nome ou código da linha" [formControl]="linha"><button (click)="pesquisarLinha()">Pesquisar</button>
     </form>
   </div>

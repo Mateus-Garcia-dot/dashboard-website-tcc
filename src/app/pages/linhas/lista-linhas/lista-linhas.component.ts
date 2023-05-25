@@ -17,10 +17,14 @@ export class ListaLinhasComponent {
     this.listarLinhas();
   }
 
-  listarLinhas() {
-    this.linhasService.listarLinhas().subscribe(resultado => {
+  listarLinhas(pagina = 0 , qntdPorPagina = 10) {
+    this.linhasService.listarLinhas(pagina, qntdPorPagina).subscribe(resultado => {
       this.linhas = resultado.linhas;
       this.dataSource = this.linhas;
     });
+  }
+
+  alterarPagina(event: any) {
+    this.listarLinhas(event.pageIndex, event.pageSize);
   }
 }

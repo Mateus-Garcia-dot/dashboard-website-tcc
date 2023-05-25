@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Subscription, interval } from 'rxjs';
 import { LinhasService } from 'src/app/services/linhas.service';
 import { MapaService } from 'src/app/services/mapa.service';
 import { PontosService } from 'src/app/services/pontos.service';
@@ -12,18 +13,23 @@ const LOCALIZACAO_PREFEITURA = { lat: -25.417419972874562, lng: -49.269363993299
   templateUrl: './mapa.component.html',
   styleUrls: ['./mapa.component.scss']
 })
-export class MapaComponent implements OnInit {
+export class MapaComponent implements OnInit, OnDestroy {
 
-  veiculos: any[] = [];
   pontos: any[] = [];
   linha: any;
   linhaId: any;
 
   options!: google.maps.MapOptions;
   markers?: any[];
+  onibusMarkers: any[] = [];
+  pontosMarkers?: any[] = [];
   polylineOptions?: any;
 
   apiLoaded: boolean = false;
+
+  alterarPosicaoOnibus?: Subscription;
+
+  carregando = false;
 
   constructor(
     private mapaService: MapaService,
@@ -50,7 +56,8 @@ export class MapaComponent implements OnInit {
   buscarPosicaoOnibusNoShapeLinha(linhaId: string) {
     this.veiculoService.buscarLocalizacaoVeiculoLinha(linhaId)
       .subscribe((veiculos: any) => {
-        console.log(veiculos)
+        this.mapaService.listaOnibus?.next(veiculos)
+        this.carregando = false;
         this.criaMarkersPosicoesVeiculo(veiculos);
       })
   }
@@ -58,21 +65,35 @@ export class MapaComponent implements OnInit {
   buscarDetalhesLinha(linhaId: any) {
     this.linhaService.buscarDetalhesLinha(linhaId).subscribe(resultado => {
       this.linha = resultado;
+      this.mapaService.linhaSelecionada?.next(this.linha)
     })
   }
 
   private atualizaFiltrosListener() {
     this.mapaService.filtros?.subscribe(filtros => {
       filtros?.exibirPontos ? this.criaMarkersPontos() : this.removeMarkersPonto();
+
+      const onibusFiltrados = this.onibusMarkers.filter(o => {
+        let filtrar = true;
+        if (filtros?.situacao.length > 0)
+          filtrar = filtros.situacao.some((s: any) => s == o.info.situacao);
+
+        if (filtros?.adaptado)
+          filtrar = filtrar || filtros?.adaptado == Boolean(o.info.adaptado);
+
+        return filtrar;
+      })
+      this.atualizaMarkers(onibusFiltrados, this.pontosMarkers);
     });
+
   }
 
   private removeMarkersPonto() {
-    this.markers = this.markers?.filter(marker => !this.pontos.some(ponto => ponto.codigo == marker.info.codigo));
+    this.markers = this.markers?.filter(marker => !this.pontos?.some(ponto => ponto.codigo == marker.info.codigo));
   }
 
   private criaMarkersPontos() {
-    if (this.pontos?.length < 0) {
+    if (this.pontos?.length <= 0) {
       this.pontosService.buscarPontosPorLinha(this.linhaId)
         .subscribe(pontos => {
           this.pontos = pontos;
@@ -99,15 +120,22 @@ export class MapaComponent implements OnInit {
   }
 
   private linhaAlteradaListener() {
-    this.mapaService.linhaSelecionada?.subscribe(filtros => {
-      this.linhaId = filtros?.linha;
-      if (filtros) {
-        this.buscarLinhaShape(filtros.linha);
-        this.buscarPosicaoOnibusNoShapeLinha(filtros.linha);
-        this.buscarDetalhesLinha(filtros.linha);
+    this.mapaService.buscaLinha?.subscribe(linha => {
+      this.limpaMarcacoes();
+      this.linhaId = linha;
+      if (linha) {
+        this.carregando = true;
+        this.buscarPosicaoOnibusNoShapeLinha(linha);
+        this.alterarPosicaoOnibus = interval(120000)
+          .subscribe(() => { this.buscarPosicaoOnibusNoShapeLinha(linha); });
+        this.buscarLinhaShape(linha);
+        this.buscarDetalhesLinha(linha);
+      } else {
+        this.alterarPosicaoOnibus?.unsubscribe();
       }
     });
   }
+
 
   private buscarLinhaShape(linhaId: string) {
     this.linhaService.buscarShapeLinha(linhaId).subscribe(pontosShape => {
@@ -123,8 +151,7 @@ export class MapaComponent implements OnInit {
   }
 
   private criaMarkersPosicoesVeiculo(veiculos: any) {
-    const markers: any[] = [];
-    this.veiculos = veiculos;
+    this.onibusMarkers = [];
     veiculos.forEach((veiculo: any) => {
       const marker = {
         info: veiculo,
@@ -135,10 +162,24 @@ export class MapaComponent implements OnInit {
           icon: 'assets/icons/bus-icon.svg'
         }
       };
-      markers.push(marker);
+      this.onibusMarkers.push(marker);
     });
 
-    this.markers = markers;
+    this.markers = [...this.onibusMarkers];
   }
+
+  private limpaMarcacoes() {
+    this.markers = [];
+    this.polylineOptions = null;
+  }
+
+  private atualizaMarkers(onibusMarkers: any, pontosMarkers: any) {
+    this.markers = [...onibusMarkers, ...pontosMarkers];
+  }
+
+  ngOnDestroy(): void {
+    this.alterarPosicaoOnibus?.unsubscribe();
+  }
+
 }
 
