@@ -19,7 +19,6 @@ export class ListaLinhasComponent {
 
   listarLinhas() {
     this.linhasService.listarLinhas().subscribe(resultado => {
-      console.log(resultado)
       this.linhas = resultado.linhas;
       this.dataSource = this.linhas;
     });

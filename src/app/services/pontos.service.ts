@@ -9,10 +9,14 @@ import { Ponto } from '../models/ponto';
 })
 export class PontosService {
 
+
   constructor(private httpClient: HttpClient) { }
 
   buscarPontosPorLinha(linhaId: string): Observable<any> {
     return this.httpClient.get<any>(`${environment.apiUrl}pontos/linha/${linhaId}`)
   }
 
+  buscarTodosPontos(pagina: number, qntdPorPagina: number) {
+    return this.httpClient.get<any>(`${environment.apiUrl}pontos?pagina=${pagina}&qntdPorPagina=${qntdPorPagina}`)
+  }
 }
