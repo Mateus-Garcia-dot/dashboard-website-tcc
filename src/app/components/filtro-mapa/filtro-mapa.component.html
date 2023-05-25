@@ -1,0 +1,32 @@
+<div class="filtros">
+  <form [formGroup]="form">
+    <section class="example-section">
+      <span>Situação:</span>
+      <mat-checkbox class="example-margin" (change)="selecionarSituacao($event, 'atrasado')" value="Atrasado">Atrasado</mat-checkbox>
+      <mat-checkbox class="example-margin">Adiantado</mat-checkbox>
+      <mat-checkbox class="example-margin">Quebrado</mat-checkbox>
+    </section>
+
+    <section class="example-section">
+      <span>Adaptado:</span>
+      <mat-checkbox class="example-margin" formControlName="adptado">Suporte a cadeirantes</mat-checkbox>
+    </section>
+
+    <section class="example-section">
+      <span>Forma de pagamento:</span>
+      <mat-checkbox class="example-margin">Dinheiro</mat-checkbox>
+      <mat-checkbox class="example-margin">Somente cartão</mat-checkbox>
+    </section>
+
+    <section class="example-section">
+      <span>Tipo:</span>
+      <mat-checkbox class="example-margin">Biarticulado</mat-checkbox>
+      <mat-checkbox class="example-margin">Ligeirinho</mat-checkbox>
+      <mat-checkbox class="example-margin">Alimentador</mat-checkbox>
+    </section>
+
+    <section class="example-section">
+      <mat-slide-toggle formControlName="exibirPontos">Exibir pontos</mat-slide-toggle>
+    </section>
+  </form>
+</div>

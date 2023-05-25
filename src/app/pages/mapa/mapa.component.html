@@ -1,11 +1,11 @@
-<div class="info">
-  <mat-card>
-
-  </mat-card>
+<div class="info" *ngIf="linha">
+  <span>{{ linha.COD + " - " + linha.NOME }}</span>
 </div>
 
+<app-filtro-mapa></app-filtro-mapa>
+
 <div *ngIf="apiLoaded">
-  <google-map [options]="options" [zoom]="13" >
+  <google-map [options]="options" [zoom]="13">
     <map-polyline *ngIf="polylineOptions" [options]="polylineOptions"></map-polyline>
     <map-marker #markerElem="mapMarker" *ngFor="let marker of markers" [position]="marker.position"
       [title]="marker.title" [options]="marker.options">

@@ -1,13 +1,16 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { ListaPontosComponent } from './core/pontos/lista-pontos/lista-pontos.component';
-import { ListaLinhasComponent } from './core/lista-linhas/lista-linhas.component';
-import { HomeComponent } from './core/home/home.component';
+import { Routes, RouterModule } from '@angular/router';
+import { IndicadoresComponent } from './pages/indicadores/indicadores.component';
+import { ListaLinhasComponent } from './pages/lista-linhas/lista-linhas.component';
+import { MapaComponent } from './pages/mapa/mapa.component';
+import { ListaPontosComponent } from './pages/pontos/lista-pontos/lista-pontos.component';
+
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: MapaComponent },
   { path: 'linhas', component: ListaLinhasComponent },
   { path: 'pontos', component: ListaPontosComponent },
+  { path: 'indicadores', component: IndicadoresComponent },
 ];
 
 @NgModule({

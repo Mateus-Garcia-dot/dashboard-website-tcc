@@ -13,12 +13,24 @@ export class MapaService {
   markers?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   polyline?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
   filtros?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  linhaSelecionada?: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(httpClient: HttpClient) {
     this.apiLoaded = this.carregaGoogleMap(httpClient);
   }
 
-  calculateCenter(pontos: any[]) {
+  alterarLinha(linha: string | null) {
+    this.linhaSelecionada?.next({linha: linha});
+    this.limparMarcacoes();
+    this.filtros?.next(null);
+  }
+
+  limparMarcacoes() {
+    this.markers?.next([]);
+    this.polyline?.next(null);
+  }
+
+  calculaCentroRota(pontos: any[]) {
     var longitudes = pontos.map((i) => i.lng);
     var latitudes = pontos.map((i) => i.lat);
 

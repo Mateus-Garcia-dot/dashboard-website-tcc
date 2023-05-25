@@ -1,0 +1,19 @@
+.filtros {
+  padding: 20px;
+  height: calc(100vh - 52px) !important;
+  background-color: white;
+  position: absolute;
+  width: 20%;
+  left: 0;
+  z-index: 1;
+  border-radius: 10px;
+
+
+  section {
+    margin-top: 16px;
+  }
+
+  mat-checkbox {
+    display: block;
+  }
+}

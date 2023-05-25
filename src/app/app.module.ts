@@ -4,21 +4,19 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MapaModule } from './shared/mapa/mapa.module';
-import { NavbarModule } from './shared/navbar/navbar.module';
-import { HomeComponent } from './core/home/home.component';
-import { ListaPontosComponent } from './core/pontos/lista-pontos/lista-pontos.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCardModule } from '@angular/material/card';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ListaLinhasComponent } from './core/lista-linhas/lista-linhas.component';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { FiltroMapaComponent } from './components/filtro-mapa/filtro-mapa.component';
+import { NavbarModule } from './components/navbar/navbar.module';
+import { ListaLinhasComponent } from './pages/lista-linhas/lista-linhas.component';
+import { MapaModule } from './pages/mapa/mapa.module';
+import { ListaPontosComponent } from './pages/pontos/lista-pontos/lista-pontos.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
     ListaPontosComponent,
     ListaLinhasComponent,
   ],

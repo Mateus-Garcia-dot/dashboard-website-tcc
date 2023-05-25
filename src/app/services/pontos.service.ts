@@ -12,6 +12,7 @@ export class PontosService {
   constructor(private httpClient: HttpClient) { }
 
   buscarPontosPorLinha(linhaId: string): Observable<any> {
-    return this.httpClient.get<any>(`${environment.apiUrl}pontos/linha/${linhaId}?pagina=1&qtdPorPagina=10`)
+    return this.httpClient.get<any>(`${environment.apiUrl}pontos/linha/${linhaId}`)
   }
+
 }

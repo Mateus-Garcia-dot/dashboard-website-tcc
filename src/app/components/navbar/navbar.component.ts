@@ -14,6 +14,6 @@ export class NavbarComponent {
   constructor(private mapaService: MapaService, ) {}
 
   pesquisarLinha() {
-    this.mapaService.filtros?.next({linha: this.linha.value});
+    this.mapaService.alterarLinha(this.linha.value);
   }
 }
