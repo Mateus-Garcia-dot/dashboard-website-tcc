@@ -1,8 +1,15 @@
 .lista-onibus {
-  ::ng-deep .mat-expansion-panel-body {
-    overflow-y: scroll;
-    max-height: 300px;
-    padding: 0 !important;
+  width: 350px;
+  ::ng-deep .mat-expansion-panel-header-title {
+    justify-content: space-between;
+  }
+
+  a {
+    color: black;
+  }
+
+  table {
+    margin-top: 10px;
   }
 
   tr {
