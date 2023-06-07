@@ -7,6 +7,6 @@ import { Component } from '@angular/core';
 })
 export class DetalhesLinhaComponent {
 
-  linhaId?: number;
+  linhaId?: string = '466';
 
 }

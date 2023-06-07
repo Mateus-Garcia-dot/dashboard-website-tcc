@@ -51,7 +51,8 @@ export class MapaService {
   }
 
   private carregaGoogleMap(httpClient: HttpClient) {
-     return httpClient.jsonp("https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfgO1jvx-odeUtoMiglrkK7Df0O77t00", 'callback')
+     return httpClient.jsonp("https://maps.googleapis.com/maps/api/js?key=", 'callback')
+    //  return httpClient.jsonp("https://maps.googleapis.com/maps/api/js?key=AIzaSyCKfgO1jvx-odeUtoMiglrkK7Df0O77t00", 'callback')
       .pipe(
         map(() => true),
         catchError(() => of(false))

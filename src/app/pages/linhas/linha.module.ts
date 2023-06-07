@@ -15,7 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
-import { ListaOnibusModule } from 'src/app/components/lista-onibus/lista-onibus.module';
+import { ListaOnibusModule } from 'src/app/components/onibus/lista-onibus/lista-onibus.module';
 
 
 
@@ -27,23 +27,25 @@ import { ListaOnibusModule } from 'src/app/components/lista-onibus/lista-onibus.
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ListaOnibusModule,
+
     MatCardModule,
     MatPaginatorModule,
     MatTableModule,
     MatCardModule,
     MatExpansionModule,
     MatCheckboxModule,
-    FormsModule,
     MatFormFieldModule,
     MatChipsModule,
     NgFor,
     MatIconModule,
     MatAutocompleteModule,
-    ReactiveFormsModule,
     AsyncPipe,
     MatInputModule,
-    ListaOnibusModule,
-    MatButtonModule
+    MatButtonModule,
+    MatIconModule,
   ]
 })
 export class LinhaModule { }

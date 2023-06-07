@@ -1,0 +1,45 @@
+.header {
+  margin: 15px 0px;
+  padding: 20px 0px;
+
+  span {
+    font-size: 36px;
+    font-weight: bold;
+  }
+}
+
+.detalhes-cards {
+  margin-bottom: 40px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  .detalhe {
+    display: flex;
+
+    .onibus-icon {
+      text-align-last: center;
+      width: 40%;
+      align-self: center;
+      mat-icon {
+        align-self: center;
+        transform: scale(1.8);
+      }
+    }
+
+
+    .valor {
+      font-size: 30px;
+      display: block;
+      font-weight: bold;
+    }
+
+    line-height: 32px;
+    font-size: 18px;
+    padding: 18px;
+    height: 100px;
+    width: 23%;
+    background-color: #80808017;
+    border-radius: 5px;
+  }
+}

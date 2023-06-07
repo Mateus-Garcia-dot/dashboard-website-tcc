@@ -4,14 +4,14 @@ import { MapaComponent } from './mapa.component';
 import { HttpClientModule, HttpClientJsonpModule } from '@angular/common/http';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { MatCardModule } from '@angular/material/card';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { FiltroMapaComponent } from 'src/app/components/filtro-mapa/filtro-mapa.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import {MatSlideToggleModule} from '@angular/material/slide-toggle';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { ListaOnibusModule } from 'src/app/components/lista-onibus/lista-onibus.module';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ListaOnibusModule } from 'src/app/components/onibus/lista-onibus/lista-onibus.module';
 
 @NgModule({
   declarations: [

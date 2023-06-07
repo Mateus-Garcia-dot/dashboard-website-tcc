@@ -14,11 +14,15 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatTableModule } from '@angular/material/table';
 import { RouterModule } from '@angular/router';
+import { ListaOnibusDetalhadaComponent } from '../lista-onibus-detalhada/lista-onibus-detalhada.component';
 
 
 
 @NgModule({
-  declarations: [ListaOnibusComponent],
+  declarations: [
+    ListaOnibusComponent,
+    ListaOnibusDetalhadaComponent
+  ],
   imports: [
     CommonModule,
     RouterModule,
@@ -39,6 +43,9 @@ import { RouterModule } from '@angular/router';
     MatInputModule,
     MatButtonModule
   ],
-  exports: [ListaOnibusComponent]
+  exports: [
+    ListaOnibusComponent,
+    ListaOnibusDetalhadaComponent
+  ]
 })
 export class ListaOnibusModule { }

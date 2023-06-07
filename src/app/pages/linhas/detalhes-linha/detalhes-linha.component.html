@@ -1,10 +1,48 @@
-<mat-card>
-  <mat-card-header>
-    <mat-card-title>Ônibus ativos</mat-card-title>
-  </mat-card-header>
-
-  <!-- <app-lista-onibus [linhaId]="linhaId"></app-lista-onibus> -->
+<div class="container">
 
 
-</mat-card>
+  <div class="header">
+    <span>466 - Estudantes</span>
+  </div>
 
+  <div class="detalhes-cards">
+    <div class="detalhe">
+      <div class="onibus-icon">
+        <mat-icon aria-hidden="false" fontIcon="directions_bus"></mat-icon>
+      </div>
+      <div>
+        <span class="valor">4</span> <span class="descricao">Onibus ativos</span>
+      </div>
+    </div>
+    <div class="detalhe">
+      <div class="onibus-icon">
+        <mat-icon aria-hidden="false" fontIcon="directions_bus"></mat-icon>
+      </div>
+      <div>
+        <span class="valor">4</span> <span class="descricao">No horário</span>
+      </div>
+    </div>
+    <div class="detalhe">
+      <div class="onibus-icon">
+        <mat-icon aria-hidden="false" fontIcon="directions_bus"></mat-icon>
+      </div>
+      <div>
+        <span class="valor">4</span> <span class="descricao"> Atrasados</span>
+      </div>
+    </div>
+
+    <div class="detalhe">
+      <div class="onibus-icon">
+        <mat-icon aria-hidden="false" fontIcon="directions_bus"></mat-icon>
+      </div>
+      <div>
+        <span class="valor">4</span> <span class="descricao">Adiantados</span>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <app-lista-onibus-detalhada [linhaId]="linhaId"></app-lista-onibus-detalhada>
+  </div>
+
+</div>
