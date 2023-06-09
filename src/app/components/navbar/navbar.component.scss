@@ -1,3 +1,22 @@
-input {
-  width: 275px;
+::ng-deep {
+  .mdc-text-field--no-label:not(.mdc-text-field--outlined):not(.mdc-text-field--textarea) .mat-mdc-form-field-infix {
+    padding: 4px 0px;
+  }
+
+  .mat-mdc-form-field-infix {
+    min-height: 30px;
+    font-size: 14px;
+  }
+
+  .mat-mdc-option.mdc-list-item {
+    min-height: 32px;
+
+  }
+  .mat-mdc-form-field-subscript-wrapper   {
+    height: 0px;
+  }
+
+  mat-form-field {
+    width: 265px;
+  }
 }

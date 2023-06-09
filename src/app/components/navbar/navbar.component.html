@@ -19,8 +19,17 @@
       </ul>
     </div>
 
-    <form *ngIf="exibirCampoPesquisa">
-      <input placeholder="Digite o nome ou código da linha" [formControl]="linha"><button (click)="pesquisarLinha()">Pesquisar</button>
+
+    <form class="example-form" *ngIf="exibirCampoPesquisa">
+      <mat-form-field class="example-full-width">
+        <input type="text" matInput placeholder="Digite o nome ou código da linha" [formControl]="linha"
+          [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of filteredOptions | async" [value]="option" (click)="pesquisarLinha()">
+            {{option}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
     </form>
   </div>
 </nav>
