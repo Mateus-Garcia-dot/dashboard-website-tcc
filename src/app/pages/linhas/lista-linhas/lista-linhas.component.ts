@@ -10,7 +10,6 @@ export class ListaLinhasComponent {
 
   linhas: any[] = [];
 
-  private teste = "";
   displayedColumns: string[] = ['COD', 'NOME', 'SOMENTE_CARTAO', 'CATEGORIA_SERVICO'];
   dataSource?: any;
 
@@ -20,7 +19,7 @@ export class ListaLinhasComponent {
 
   listarLinhas(pagina = 0 , qntdPorPagina = 10) {
     this.linhasService.listarLinhas(pagina, qntdPorPagina).subscribe(resultado => {
-      this.linhas = resultado.linhas;
+      this.linhas = resultado;
       this.dataSource = this.linhas;
     });
   }
