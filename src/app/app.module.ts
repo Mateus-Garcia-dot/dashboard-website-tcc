@@ -10,6 +10,7 @@ import { MapaModule } from './pages/mapa/mapa.module';
 import { CustomPaginator } from './services/translate.service';
 import { LinhaModule } from './pages/linhas/linha.module';
 import { PontosModule } from './pages/pontos/pontos.module';
+import { IndicadoresModule } from './pages/indicadores/indicadores.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { PontosModule } from './pages/pontos/pontos.module';
     MapaModule,
     NavbarModule,
     LinhaModule,
+    IndicadoresModule,
     PontosModule
   ],
   providers: [

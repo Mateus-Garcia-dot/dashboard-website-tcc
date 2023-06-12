@@ -1,1 +1,14 @@
-<p>indicadores works!</p>
+<div class="container">
+  <div class="titulo-listas">Indicadores</div>
+
+  <div id="chart">
+    <apx-chart
+      [series]="chartOptions.series!"
+      [chart]="chartOptions.chart!"
+      [dataLabels]="chartOptions.dataLabels!"
+      [plotOptions]="chartOptions.plotOptions!"
+      [xaxis]="chartOptions.xaxis!"
+    ></apx-chart>
+  </div>
+
+</div>
